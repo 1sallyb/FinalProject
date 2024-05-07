@@ -8,7 +8,9 @@ LOG_FILE = f"{datetime.now().strftime('%Y_%m_%d_%H_%M_%S')}.log"
 
 log_dir = 'logs'
 
-full_log_path = os.path.join(from_root(), log_dir)
+file_path = "/Users/sallybrumage/Desktop/Final Project/FinalProject/final_project"
+
+full_log_path = os.path.join('/Users/sallybrumage/Desktop/Final Project/FinalProject/final_project', log_dir)
 
 logs_path = os.path.join(full_log_path, LOG_FILE)
 
