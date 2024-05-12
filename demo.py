@@ -1,13 +1,3 @@
-from final_project.logger import logging
-from final_project.exception import final_except
-import sys
+from final_project.constants import *
 
-logging.info("This a test.")
-
-try:
-    a = 1/0
-
-except Exception as e:
-    logging.info(e)
-    raise final_except(e,sys) from e
-
+print(DATABASE_NAME)
