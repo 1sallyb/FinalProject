@@ -13,7 +13,7 @@ from final_project.logger import logging
 from final_project.utils.main_utils import load_numpy_array_data, read_yaml_file, load_object, save_object
 from final_project.entity.config_entity import ModelTrainerConfig
 from final_project.entity.artifact_entity import DataTransformationArtifact, ModelTrainerArtifact, ClassificationMetricArtifact
-from final_project.entity.estimator import USVISAModel
+from final_project.entity.estimator import USVisaModel
 
 class ModelTrainer:
     def __init__(self, data_transformation_artifact: DataTransformationArtifact,
@@ -80,7 +80,7 @@ class ModelTrainer:
                 logging.info("No best model found with score more than base score")
                 raise Exception("No best model found with score more than base score")
 
-            usvisa_model = USVISAModel(preprocessing_object=preprocessing_obj,
+            usvisa_model = USVisaModel(preprocessing_object=preprocessing_obj,
                                        trained_model_object=best_model_detail.best_model)
             logging.info("Created usvisa model object with preprocessor and model")
             logging.info("Created best model file path.")

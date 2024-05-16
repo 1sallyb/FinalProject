@@ -1,3 +1,4 @@
+import json
 import sys
 from evidently.model_profile import Profile
 from evidently.model_profile.sections import DataDriftProfileSection
@@ -59,7 +60,7 @@ class DataValidation:
                 if len(missing_categorical_columns) > 0:
                     logging.info(f"The missing categorical columns are: {missing_categorical_columns}")
 
-            return False if len(missing_categorical_columns) > 0 or len(missing_numerical_columns) > 0
+            return False if len(missing_categorical_columns) > 0 or len(missing_numerical_columns) > 0 else True
             
         except Exception as e:
             raise final_except(e,sys)
@@ -77,7 +78,7 @@ class DataValidation:
         '''
 
         try: 
-            data_drift_profile = Profile(sections = [DataDriftProfile()])
+            data_drift_profile = Profile(sections = [DataDriftProfileSection()])
             data_drift_profile.calculate(reference_df, current_df)
 
             report = data_drift_profile.json()
@@ -107,7 +108,7 @@ class DataValidation:
             logging.info("Entered the initiate data method of the data validation class")
 
             train_df, test_df = (DataValidation.read_data(file_path= self.data_ingestion_artifact_path.trained_file_path),
-                                    DataValidation.read_data(file_path= self.data_ingestion_artifact_path.test_file_path))
+                                DataValidation.read_data(file_path= self.data_ingestion_artifact_path.test_file_path))
                     
             status = self.validate_number_of_columns(dataframe = train_df)
             logging.info(f"All required columns present in train data {status}")
