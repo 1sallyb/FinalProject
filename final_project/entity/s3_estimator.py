@@ -18,7 +18,7 @@ class USvisaEstimator:
         self.bucket_name = bucket_name
         self.s3 = SimpleStorageService()
         self.model_path = model_path
-        self.loaded_model:USVisaModel=None
+        self.loaded_model:USvisaModel=None
 
 
     def is_model_present(self,model_path):
@@ -28,7 +28,7 @@ class USvisaEstimator:
             print(e)
             return False
 
-    def load_model(self,)->USVISAModel:
+    def load_model(self,)->USvisaModel:
         """
         Load the model from the model_path
         :return:
